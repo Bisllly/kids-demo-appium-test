@@ -1,17 +1,14 @@
 package org.features;
 
-import net.serenitybdd.junit.runners.SerenityRunner;
-import net.thucydides.core.annotations.Managed;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import org.junit.jupiter.api.Test;
 
-@RunWith(SerenityRunner.class)
 public class LaunchEmulatorStory {
-    @Managed(driver = "appium")
-    WebDriver driver;
-    @Test
-    public void launchEmulator() {
-        driver.get("http://www.google.com");
+    AppiumDriverLocalService service = AppiumDriverLocalService.buildDefaultService();
+    service.start();
+    try {
+        // do stuff with drivers
+    } finally {
+        service.stop();
     }
 }
